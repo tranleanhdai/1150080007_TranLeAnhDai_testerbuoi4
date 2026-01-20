@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrganizationManagement", "OrganizationManagement\OrganizationManagement.csproj", "{9C8C7509-B705-4DB4-AA70-4581D2A882DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrganizationManagement.Tests", "OrganizationManagement.Tests\OrganizationManagement.Tests.csproj", "{36252662-B95A-467F-8E92-A872AF8825C7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C8C7509-B705-4DB4-AA70-4581D2A882DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C8C7509-B705-4DB4-AA70-4581D2A882DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C8C7509-B705-4DB4-AA70-4581D2A882DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C8C7509-B705-4DB4-AA70-4581D2A882DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36252662-B95A-467F-8E92-A872AF8825C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36252662-B95A-467F-8E92-A872AF8825C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36252662-B95A-467F-8E92-A872AF8825C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36252662-B95A-467F-8E92-A872AF8825C7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A74C4C1E-37D5-4AE1-A5DA-45DC02CBBA7C}
+	EndGlobalSection
+EndGlobal
