@@ -15,6 +15,12 @@
         {
             var result = new SaveOrgResult();
 
+            // Normalize
+            orgName = (orgName ?? string.Empty).Trim();
+            address = string.IsNullOrWhiteSpace(address) ? null : address.Trim();
+            phone = string.IsNullOrWhiteSpace(phone) ? null : phone.Trim();
+            email = string.IsNullOrWhiteSpace(email) ? null : email.Trim();
+
             var errors = OrganizationValidator.Validate(orgName, address, phone, email);
             if (errors.Count > 0)
             {
@@ -31,16 +37,19 @@
                 return result;
             }
 
-            _repo.Insert(new Organization
+            var org = new Organization
             {
                 OrgName = orgName,
                 Address = address,
                 Phone = phone,
                 Email = email
-            });
+            };
+
+            org.Id = _repo.Insert(org);
 
             result.Success = true;
             result.Message = "Save successfully";
+            result.SavedOrganization = org;
             return result;
         }
     }

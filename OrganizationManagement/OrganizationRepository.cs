@@ -69,7 +69,7 @@ ON Organizations(LOWER(OrgName));
             }
         }
 
-        public void Insert(Organization o)
+        public int Insert(Organization o)
         {
             using (var con = new SQLiteConnection(_connStr))
             {
@@ -84,6 +84,38 @@ VALUES(@name, @addr, @phone, @email);";
                     cmd.Parameters.AddWithValue("@phone", (object)o.Phone ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("@email", (object)o.Email ?? DBNull.Value);
                     cmd.ExecuteNonQuery();
+                }
+
+                using (var cmd2 = con.CreateCommand())
+                {
+                    cmd2.CommandText = "SELECT last_insert_rowid();";
+                    var id = Convert.ToInt32(cmd2.ExecuteScalar());
+                    return id;
+                }
+            }
+        }
+
+        public Organization GetById(int id)
+        {
+            using (var con = new SQLiteConnection(_connStr))
+            {
+                con.Open();
+                using (var cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT Id, OrgName, Address, Phone, Email FROM Organizations WHERE Id=@id LIMIT 1;";
+                    cmd.Parameters.AddWithValue("@id", id);
+                    using (var r = cmd.ExecuteReader())
+                    {
+                        if (!r.Read()) return null;
+                        return new Organization
+                        {
+                            Id = r.GetInt32(0),
+                            OrgName = r.GetString(1),
+                            Address = r.IsDBNull(2) ? null : r.GetString(2),
+                            Phone = r.IsDBNull(3) ? null : r.GetString(3),
+                            Email = r.IsDBNull(4) ? null : r.GetString(4)
+                        };
+                    }
                 }
             }
         }
